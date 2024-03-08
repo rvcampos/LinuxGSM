@@ -1443,6 +1443,13 @@ fn_info_messages_sf() {
 	} | column -s $'\t' -t
 }
 
+fn_info_messages_sml() {
+	{
+		fn_port "header"
+		fn_port "Game" port udp
+	} | column -s $'\t' -t
+}
+
 fn_info_messages_sof2() {
 	{
 		fn_port "header"
@@ -1837,6 +1844,8 @@ fn_info_messages_select_engine() {
 		fn_info_messages_sdtd
 	elif [ "${shortname}" == "sf" ]; then
 		fn_info_messages_sf
+	elif [ "${shortname}" == "sml" ]; then
+		fn_info_messages_sml
 	elif [ "${shortname}" == "sof2" ]; then
 		fn_info_messages_sof2
 	elif [ "${shortname}" == "sol" ]; then

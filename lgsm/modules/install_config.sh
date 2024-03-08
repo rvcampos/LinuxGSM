@@ -698,6 +698,10 @@ elif [ "${shortname}" == "sf" ]; then
 	fn_default_config_remote
 	fn_set_config_vars
 	fn_list_config_locations
+elif [ "${shortname}" == "sml" ]; then
+	fn_check_cfgdir
+	fn_set_config_vars
+	fn_list_config_locations
 elif [ "${shortname}" == "sol" ]; then
 	array_configs+=(soldat.ini)
 	fn_fetch_default_config

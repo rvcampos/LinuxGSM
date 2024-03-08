@@ -494,6 +494,19 @@ else
 		elif grep -qE "^[[:blank:]]*preexecutable=" "${configdirserver}/_default.cfg"; then
 			eval preexecutable="$(sed -nr 's/^ *preexecutable=(.*)$/\1/p' "${configdirserver}/_default.cfg")"
 		fi
+
+		if [ "${shortname}" == "sml" ]; then
+			smlboolparams=""
+			[ "${friendlyfire}" = 1 ] && smlboolparams="${smlboolparams}?FRIENDLYFIRE"
+			[ "${peacefulmode}" = 1 ] && smlboolparams="${smlboolparams}?PEACEFULMODE"
+			[ "${keepinventory}" = 1 ] && smlboolparams="${smlboolparams}?KEEPINVENTORY"
+			[ "${nodeterioration}" = 1 ] && smlboolparams="${smlboolparams}?NODETERIORATION"
+			[ "${private}" = 1 ] && smlboolparams="${smlboolparams}?PRIVATE"
+
+			startparameters=${startparameters/\?\%boolparams\%/$smlboolparams}
+
+			[ "${privatekey}" != "" ] && startparameters="${startparameters} -ini:Engine:[EpicOnlineServices]:DedicatedServerPrivateKey=${privatekey}"
+		fi
 	}
 
 	# Load the linuxgsm.sh in to tmpdir. If missing download it.

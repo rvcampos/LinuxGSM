@@ -2274,6 +2274,16 @@ fn_info_game_wurm() {
 	queryport="${queryport:-"0"}"
 }
 
+# Config Type: ini
+# Parameters: false
+# Comment: ; or #
+# Example: ServerName=SERVERNAME
+# Filetype: cfg
+fn_info_game_sml() {
+	servername="${servername:-"NOT SET"}"
+	port="${port:-"0"}"
+}
+
 unavailable="${red}UNAVAILABLE${default}"
 zero="${red}0${default}"
 
@@ -2403,6 +2413,8 @@ elif [ "${shortname}" == "sdtd" ]; then
 	fn_info_game_sdtd
 elif [ "${shortname}" == "sf" ]; then
 	fn_info_game_sf
+elif [ "${shortname}" == "sml" ]; then
+	fn_info_game_sml	
 elif [ "${shortname}" == "sof2" ]; then
 	fn_info_game_sof2
 elif [ "${shortname}" == "sol" ]; then
